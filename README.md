@@ -2,8 +2,7 @@
 
 # Intranet FA
 
-Intranet d'entreprise pour Fougères Agglomération développé avec Django.
-
+Intranet développé lors de mon stage à Fougères Agglomération, développé en Python avec Django.
 ## Fonctionnalités
 
 - **Newsletter** : Gestion d'articles avec éditeur riche (Summernote)
@@ -18,7 +17,7 @@ Intranet d'entreprise pour Fougères Agglomération développé avec Django.
 - PostgreSQL
 - LDAP (Active Directory)
 - Django Summernote
-- Conversion automatique AVIF
+- Conversion des images en AVIF pour stockage
 
 ## Installation
 
@@ -43,7 +42,7 @@ Intranet d'entreprise pour Fougères Agglomération développé avec Django.
 
 ## Configuration
 
-Le projet utilise des variables d'environnement pour la configuration. Voir `.env.exemple` pour les variables requises.
+Le projet utilise des variables d'environnement pour la configuration, voir `.env.exemple`.
 
 ## Auteur
 
