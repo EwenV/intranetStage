@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_extra %}
+    {% if organigramme %}
+        <link rel="stylesheet" href="{% static 'css/pages/organigramme.css' %}">
+        <link rel="stylesheet" href="{% static 'css/panzoom.css' %}">
+        <script src="{% static 'js/panzoom.min.js' %}"></script>
+        <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+            const elem = document.getElementById('organigramme-img');
+            
+            // Initialiser Panzoom
+            const panzoom = Panzoom(elem, {
+                maxScale: 5,
+                minScale: 0.5,
+                step: 0.3,
+                cursor: 'move'
+            });
+
+            // Activer le zoom avec la molette
+            const parent = elem.parentElement;
+            parent.addEventListener('wheel', panzoom.zoomWithWheel);
+        });
+        </script>
+    {% endif %}
+{% endblock head_extra %}
+{% block main %}
+    {% if organigramme %}
+        <div class="organigramme-page">
+            <div id="organigramme-container">
+                <img id="organigramme-img"
+                     src="{{ organigramme.fichier_avif.url }}"
+                     alt="Organigramme de Fougères Agglomération">
+            </div>
+            <div class="bandeau_infos">
+                <div class="instructions">🖱️ Molette pour zoomer | Cliquez-glissez pour déplacer | Ctrl+molette pour zoom précis</div>
+                <a href="{{ organigramme.fichier_pdf.url }}"
+                   class="download-button"
+                   download>💾 Télécharger le PDF</a>
+            </div>
+        </div>
+    {% else %}
+        <p>Aucun organigramme n'est disponible pour le moment.</p>
+    {% endif %}
+{% endblock main %}

@@ -1,0 +1,42 @@
+.rapports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.rapport-card {
+  background: var(--color-surface);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  align-self: center;
+}
+
+.rapport-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.rapport-img {
+  height: 100px;
+  max-width: 100px;
+  display: block;
+  margin-right: 1.5rem;
+}
+
+.rapport-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.rapport-title,
+.rapport-link {
+  margin: 0.5rem;
+  text-align: center;
+  margin-left: 0.5 rem;
+  margin-right: 0.5 rem;
+}

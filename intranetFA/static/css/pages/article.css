@@ -1,0 +1,239 @@
+/* ===========================
+   Page Article - Contenu
+=========================== */
+
+.article-detail {
+  background: var(--color-surface);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* --- En-tête article --- */
+.article-detail-header {
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 1.5rem;
+}
+
+.article-detail-title {
+  font-size: 2rem;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.article-detail-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.article-detail-category {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.article-hr-lien {
+  border: none;
+  border-top: 2px solid var(--color-border);
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.article-outil-lien {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.article-outil-lien a {
+  font-size: large;
+}
+
+/* ===========================
+   Article - Contenu
+=========================== */
+
+.article-content {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+/* Titres dans le contenu */
+.article-content h1 {
+  background-color: var(--color-secondary);
+  border-radius: var(--radius);
+  text-align: center;
+  font-size: 2rem;
+  padding: 0 0.5rem 0 0.5rem;
+  margin: 3rem 1rem 2.5rem 1rem;
+}
+
+.article-content h2 {
+  font-size: 1.6rem;
+  color: var(--color-text);
+  margin: 2rem 0 1.25rem;
+}
+
+.article-content h3 {
+  font-size: 1.3rem;
+  color: var(--color-text);
+  margin: 1.8rem 0 0.8rem;
+  font-weight: 600;
+}
+
+/* Paragraphes */
+.article-content p {
+  margin-bottom: 1.2rem;
+}
+
+.article-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Images dans le contenu */
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin: 1em;
+  box-shadow: var(--shadow);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Listes */
+.article-content ul {
+  list-style: disc;
+  padding-left: 1.5em;
+  margin: 1rem 0 1.5rem 1.5rem;
+}
+
+.article-content ol {
+  list-style: decimal;
+  padding-left: 1.5em;
+  margin: 1rem 0 1.5rem 1.5rem;
+}
+
+.article-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Liens */
+.article-content a {
+  color: var(--color-secondary);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.article-content a:hover {
+  color: var(--color-accent);
+}
+
+/* Tableaux */
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+.article-content table th,
+.article-content table td {
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.article-content table th {
+  background: var(--color-bg);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.article-content table tr:hover {
+  background: var(--color-bg);
+}
+
+/* Séparateurs HR */
+.article-content hr {
+  border: none;
+  border-top: 2px solid var(--color-border);
+  margin: 2rem 0;
+}
+
+/* Code / Preformatted */
+.article-content pre,
+.article-content code {
+  background: var(--color-bg);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+}
+
+.article-content pre {
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+/* Blockquotes */
+.article-content blockquote {
+  border-left: 4px solid var(--color-primary);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--color-muted);
+}
+
+/* ===========================
+   Responsive
+=========================== */
+@media (max-width: 800px) {
+  .article-detail {
+    padding: 1.5rem;
+  }
+
+  .article-detail-title {
+    font-size: 1.8rem;
+  }
+
+  .article-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .article-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .article-content h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .article-detail {
+    max-width: 1400px;
+  }
+  .article-detail-title {
+    font-size: 3.5rem;
+  }
+
+  .article-content {
+    font-size: 1.3rem;
+  }
+}

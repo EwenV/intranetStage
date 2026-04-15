@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_extra %}
+    <link rel="stylesheet" href="{% static 'css/pages/fiche_index.css' %}">
+{% endblock head_extra %}
+{% block main %}
+    <h1 class="page-title">Fiches réflexes</h1>
+    <div class="fiches-container">
+        {% if fiches %}
+            <div class="fiches-grid">
+                {% for fiche in fiches %}
+                    <div class="fiche-card">
+                        <h2 class="fiche-title">{{ fiche.titre }}</h2>
+                        <img class="fiche-img"
+                             src="{{ fiche.fichier_avif.url }}"
+                             alt="miniature de la fiche réflexe">
+                        <a href="{% url 'fiche_reflexes:fiche_reflexes' fiche.id %}"
+                           role="button"
+                           class="outline rapport-link">Voir fiche</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-rapports">Aucune fiche disponible pour le moment.</p>
+        {% endif %}
+    </div>
+{% endblock main %}

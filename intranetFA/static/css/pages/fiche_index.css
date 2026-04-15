@@ -1,0 +1,31 @@
+.fiches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.fiche-card {
+  text-align: center;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.fiche-img {
+  max-width: 120px * 1.42;
+  max-height: 120px * 1.42;
+  min-width: 120px;
+  min-height: 120px;
+  margin: 1rem auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: var(--radius);
+}

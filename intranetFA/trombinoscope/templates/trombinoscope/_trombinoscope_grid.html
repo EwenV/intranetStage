@@ -1,0 +1,51 @@
+{% load static %}
+<div class="trombinoscope-grid">
+  {% if ldap_entries %}
+    {% for entry in ldap_entries %}
+      <article class="person-card">
+        {% if entry.thumbnailPhoto %}
+          <img src="data:image/jpg;base64,{{ entry.thumbnailPhoto }}"
+               alt="Photo de {{ entry.name }}"
+               class="person-photo" />
+        {% else %}
+          <div class="person-photo-placeholder">
+            <img src="{% static 'images/profile_picture_placeholder.png' %}" alt="" />
+          </div>
+        {% endif %}
+        <h3 class="person-name">{{ entry.name }}</h3>
+        <div class="person-info">
+          {% if entry.title %}
+            <p>
+              <strong>Fonction :</strong> {{ entry.title }}
+            </p>
+          {% endif %}
+          {% if entry.department %}
+            <p>
+              <strong>Service :</strong> {{ entry.department }}
+            </p>
+          {% endif %}
+          {% if entry.mail %}
+            <p>
+              <strong>Email :</strong>
+              <a href="mailto:{{ entry.mail }}">{{ entry.mail }}</a>
+            </p>
+          {% endif %}
+          {% if entry.telephoneNumber %}
+            <p>
+              <strong>Téléphone :</strong>
+              <a href="tel:{{ entry.telephoneNumber }}">{{ entry.telephoneNumber }}</a>
+            </p>
+          {% endif %}
+          {% if entry.mobile %}
+            <p>
+              <strong>Mobile :</strong>
+              <a href="tel:{{ entry.mobile }}">{{ entry.mobile }}</a>
+            </p>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  {% else %}
+    <p>Aucune entrée trouvée</p>
+  {% endif %}
+</div>

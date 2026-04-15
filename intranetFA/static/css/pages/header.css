@@ -1,0 +1,304 @@
+/* ===========================
+   Header / Navbar
+=========================== */
+.header {
+  background: var(--color-surface);
+  box-shadow: var(--shadow);
+  padding: 0.5rem 2rem 0rem;
+  position: relative;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.logoFA {
+  height: 90px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.navbar__center {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav-item {
+  font-weight: 500;
+  transition: color 0.2s ease;
+  font-size: 22px;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  color: var(--color-secondary);
+}
+
+/* Connexion (droite) */
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon_connexion {
+  height: 1.2rem;
+}
+
+/* Dropdown */
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  z-index: 10;
+}
+
+.dropdown-content li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--color-text);
+}
+
+.dropdown-content li a:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.nav-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Menu burger (caché par défaut) */
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  background: none;
+  border: none;
+  z-index: 1001;
+}
+
+.burger-menu span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: var(--color-text);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Animation du burger en X */
+.burger-menu.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.burger-menu.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-menu.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.menu-overlay.active {
+  display: block;
+}
+
+/* ===========================
+   RESPONSIVE - Écrans <= 1600px
+=========================== */
+@media screen and (max-width: 1600px) {
+  .navbar {
+    max-width: 1600px;
+    gap: 2rem;
+  }
+
+  .navbar__center {
+    gap: 1.5rem;
+  }
+
+  .logoFA {
+    height: 80px;
+  }
+
+  .nav-item {
+    font-size: 20px;
+  }
+}
+
+/* ===========================
+   Écrans <= 1024px
+=========================== */
+@media screen and (max-width: 1024px) {
+  .header {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .logoFA {
+    height: 60px;
+    margin-left: 0;
+  }
+
+  /* Afficher le burger */
+  .burger-menu {
+    display: flex;
+    order: 3;
+  }
+
+  /* Menu mobile */
+  .navbar__center {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--color-surface);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5rem 2rem 2rem;
+    gap: 1.5rem;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .navbar__center.active {
+    left: 0;
+  }
+
+  .navbar__center li {
+    width: 100%;
+  }
+
+  .nav-item {
+    font-size: 18px;
+  }
+
+  /* Dropdown en mobile */
+  .dropdown-content {
+    position: static;
+    display: none;
+    border: none;
+    box-shadow: none;
+    padding-left: 1rem;
+    background: transparent;
+  }
+
+  .nav-dropdown.active .dropdown-content {
+    display: block;
+  }
+
+  /* Connexion en mobile */
+  .navbar__right {
+    order: 2;
+    margin-left: auto;
+  }
+}
+
+/* ===========================
+   Tablettes (768px - 1024px)
+=========================== */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .navbar__center {
+    width: 350px;
+  }
+}
+
+/* ===========================
+   Petits mobiles (< 480px)
+=========================== */
+@media screen and (max-width: 480px) {
+  .header {
+    padding: 0.5rem;
+  }
+
+  .logoFA {
+    height: 50px;
+  }
+
+  .navbar__center {
+    width: 250px;
+    padding: 4rem 1.5rem 2rem;
+  }
+
+  .navbar__right {
+    gap: 0.3rem;
+  }
+
+  .navbar__right .nav-item {
+    font-size: 14px;
+  }
+
+  .icon_connexion {
+    height: 1rem;
+  }
+}
+
+/* ===========================
+   Très grands écrans / 4K (> 2560px)
+=========================== */
+@media screen and (min-width: 2560px) {
+  .navbar {
+    max-width: 2400px;
+    gap: 4rem;
+  }
+
+  .navbar__center {
+    gap: 3rem;
+  }
+
+  .logoFA {
+    height: 110px;
+  }
+
+  .nav-item {
+    font-size: 26px;
+  }
+
+  .icon_connexion {
+    height: 1.5rem;
+  }
+
+  .dropdown-content {
+    min-width: 220px;
+  }
+
+  .dropdown-content li a {
+    padding: 0.75rem 1.5rem;
+    font-size: 20px;
+  }
+}

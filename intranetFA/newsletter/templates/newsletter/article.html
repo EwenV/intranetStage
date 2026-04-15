@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_extra %}
+  <link rel="stylesheet" href="{% static 'css/pages/article.css' %}" />
+{% endblock head_extra %}
+{% block main %}
+  <article class="article-detail">
+    <header class="article-detail-header">
+      <h2 class="article-detail-title">{{ article.titre }}</h2>
+      <div class="article-detail-meta">
+        <span class="article-detail-category">{{ article.get_categorie_display }}</span>
+        <span>{{ article.date_derniere_publication|date:"d/m/Y" }}</span>
+        <span>Par
+          {% if article.auteur.get_full_name %}
+            {{ article.auteur.get_full_name }}
+          {% else %}
+            {{ article.auteur }}
+          {% endif %}
+        </span>
+      </div>
+      {% if article.categorie == "OUTIL" %}
+        <hr class="article-hr-lien">
+        <div class="article-outil-lien">
+          <a class="outline"
+             role="button"
+             href="{{ article.outilinterne.lien_outil }}"
+             target="_blank">Lien vers l'outil</a>
+        </div>
+      {% endif %}
+    </header>
+    <div class="article-content">{{ article.contenu|safe }}</div>
+  </article>
+{% endblock main %}

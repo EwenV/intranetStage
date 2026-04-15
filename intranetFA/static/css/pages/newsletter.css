@@ -1,0 +1,119 @@
+.categories,
+.sort-toggle {
+  flex-shrink: 0;
+  height: 2.2rem;
+  padding: 0.5rem;
+  line-height: normal;
+  background: white;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius);
+}
+
+.sort-toggle:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.articles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.article-card {
+  background: var(--color-surface);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.article-image {
+  flex: 0 0 220px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.article-image img {
+  border-radius: var(--radius);
+  object-fit: contain;
+  object-position: center;
+  min-width: 60%;
+}
+
+.article-content {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.article-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.article-category {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--color-primary);
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.article-meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin: 0.75rem 0 1rem;
+}
+
+.article-excerpt {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+.article-footer {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1rem;
+}
+
+.pagination {
+  color: white;
+  cursor: pointer;
+}
+
+.pagination-nav:hover {
+  background-color: var(--color-secondary);
+}
+
+@media (max-width: 600px) {
+  .article-image {
+    display: none;
+  }
+  .filter-container {
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .article-image {
+    flex: 0 0 440px;
+  }
+}

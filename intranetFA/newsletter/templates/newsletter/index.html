@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_extra %}
+  <link rel="stylesheet" href="{% static 'css/pages/newsletter.css' %}" />
+  <script src="{% static 'js/alpine.min.js'%}" defer></script>
+  <script src="{% static 'js/htmx.min.js' %}" defer></script>
+{% endblock head_extra %}
+{% block main %}
+  <div class="container"
+       x-data="{ search: '{{ request.GET.search|default:'' }}', categorie: '{{ request.GET.categorie|default:'' }}', sortOrder: '{{ request.GET.sort_order|default:'desc' }}' }">
+    <div class="filter-container">
+      <div class="search-container">
+        <input type="text"
+               placeholder="Rechercher..."
+               x-model="search"
+               hx-get="{% url 'newsletter:index' %}"
+               hx-trigger="input changed delay:300ms"
+               hx-target="#articles-container"
+               hx-include="[x-model]"
+               name="search" />
+        <a type="button"
+           href="{% url 'newsletter:index' %}"
+           class="reset-search">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               width="24"
+               height="24"
+               viewBox="0 0 24 24">
+            <path d="M23 12c0 1.042-.154 2.045-.425 3h-2.101c.335-.94.526-1.947.526-3 0-4.962-4.037-9-9-9-1.706 0-3.296.484-4.655 1.314l1.858 2.686h-6.994l2.152-7 1.849 2.673c1.684-1.049 3.659-1.673 5.79-1.673 6.074 0 11 4.925 11 11zm-6.354 7.692c-1.357.826-2.944 1.308-4.646 1.308-4.962 0-9-4.038-9-9 0-1.053.191-2.06.525-3h-2.1c-.271.955-.425 1.958-.425 3 0 6.075 4.925 11 11 11 2.127 0 4.099-.621 5.78-1.667l1.853 2.667 2.152-6.989h-6.994l1.855 2.681z" />
+          </svg>
+        </a>
+      </div>
+      <select class="categories"
+              x-model="categorie"
+              hx-get="{% url 'newsletter:index' %}"
+              hx-trigger="change"
+              hx-target="#articles-container"
+              hx-include="[x-model]"
+              name="categorie">
+        <option value="">Toutes les catégories</option>
+        {% for key, value in categories %}<option value="{{ key }}">{{ value }}</option>{% endfor %}
+      </select>
+      <button class="sort-toggle"
+              x-model="sortOrder"
+              @click="sortOrder = sortOrder === 'desc' ? 'asc' : 'desc'"
+              hx-get="{% url 'newsletter:index' %}"
+              hx-trigger="click"
+              hx-target="#articles-container"
+              hx-include="[x-model]"
+              name="sort_order">
+        <span x-text="sortOrder === 'desc' ? '↓ Plus récent' : '↑ Plus ancien'"></span>
+      </button>
+    </div>
+    <div id="articles-container">{% include "newsletter/_articles_list.html" %}</div>
+  </div>
+{% endblock main %}

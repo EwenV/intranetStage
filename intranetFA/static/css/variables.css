@@ -1,0 +1,52 @@
+:root {
+  /* Couleurs charte graphique FA */
+  --color-primary: #2563eb;
+  --color-secondary: #475569;
+  --color-accent: #0ea5e9;
+  --color-black: #000000;
+
+  /* Neutres */
+  --color-bg: #f9f9f9;
+  --color-surface: #fff;
+  --color-border: #ddd;
+  --color-text: #222;
+  --color-muted: #666;
+
+  /* Layout et formes */
+  --radius: 8px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --main-width: 1200px;
+  --padding-section: 2rem;
+
+  /* Typographie */
+  --font-main: "Rubik", sans-serif;
+  --font-title: "Somatic Rounded", sans-serif;
+  --font-size-base: 16px;
+
+  /* Somatic Rounded */
+  @font-face {
+    font-family: "Somatic Rounded";
+    src: url("../polices/Somatic-Rounded.otf") format("otf");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Rubik Regular */
+  @font-face {
+    font-family: "Rubik";
+    src: url("../polices/Rubik-Regular.ttf") format("ttf");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Rubik Bold */
+  @font-face {
+    font-family: "Rubik";
+    src: url("../polices/Rubik-Bold.ttf") format("ttf");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+}

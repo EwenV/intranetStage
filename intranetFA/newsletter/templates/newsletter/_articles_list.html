@@ -1,0 +1,73 @@
+{% load static %}
+<div class="articles-list">
+  {% for article in articles %}
+    <article class="article-card">
+      <div class="article-image">
+        {% if article.image_en_tete %}
+          <img src="{{ article.image_en_tete.url }}"
+               alt="Image d'en tête de l'article" />
+        {% else %}
+          {% if article.categorie == "RH" %}
+            <img src="{% static 'images/articles/default_rh.png' %}"
+                 alt="Image d'en tête par défaut des articles RH" />
+          {% elif article.categorie == "RPRESSE" %}
+            <img src="{% static 'images/articles/default_rpresse.png' %}"
+                 alt="Image d'en tête par défaut des revues de presse" />
+          {% elif article.categorie == "ACTU" %}
+            <img src="{% static 'images/articles/default_actu.png' %}"
+                 alt="Image d'en tête par défaut des articles d'actualités" />
+          {% elif article.categorie == "ADM" %}
+            <img src="{% static 'images/articles/default_adm.png' %}"
+                 alt="Image d'en tête par défaut des articles RH" />
+          {% elif article.categorie == "OUTIL" %}
+            <img src="{% static 'images/articles/default_outil.png' %}"
+                 alt="Image d'en tête par défaut des revues de presse" />
+          {% elif article.categorie == "SI" %}
+            <img src="{% static 'images/articles/default_si.png' %}"
+                 alt="Image d'en tête par défaut des articles d'actualités" />
+          {% endif %}
+        {% endif %}
+      </div>
+      <div class="article-content">
+        <header class="article-header">
+          <h2 class="article-title">{{ article.titre }}</h2>
+          <span class="article-category">{{ article.get_categorie_display }}</span>
+        </header>
+        <div class="article-meta">
+          <span class="meta-item">🗓 {{ article.date_derniere_publication|date:"d/m/Y" }}</span>
+          <span class="meta-item">
+            auteur :
+            {% if article.auteur.get_full_name %}
+              {{ article.auteur.get_full_name }}
+            {% else %}
+              {{ article.auteur }}
+            {% endif %}
+          </span>
+        </div>
+        <p class="article-excerpt">{{ article.get_extrait }}</p>
+        <div class="article-footer">
+          <a href="{% url 'newsletter:detail' article.id %}"
+             role="button"
+             class="outline">Lire l'article</a>
+        </div>
+      </div>
+    </article>
+  {% empty %}
+    <p>Aucun article disponible pour le moment.</p>
+  {% endfor %}
+</div>
+<div class="pagination">
+  <span>Page {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+  {% if page_obj.has_previous %}
+    <a class="pagination-nav"
+       hx-get="?page={{ page_obj.previous_page_number }}"
+       hx-target="#articles-container"
+       hx-include="[x-model]">← Précédent</a>
+  {% endif %}
+  {% if page_obj.has_next %}
+    <a class="pagination-nav"
+       hx-get="?page={{ page_obj.next_page_number }}"
+       hx-target="#articles-container"
+       hx-include="[x-model]">Suivant →</a>
+  {% endif %}
+</div>

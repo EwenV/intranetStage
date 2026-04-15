@@ -1,0 +1,56 @@
+/* ===========================
+   Grille trombinoscope
+=========================== */
+.trombinoscope-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.person-card {
+  text-align: center;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.person-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.person-photo-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius);
+  background: var(--muted-border-color);
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-muted);
+}
+
+.person-name {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.person-info {
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.person-info p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.person-info strong {
+  font-weight: 600;
+}

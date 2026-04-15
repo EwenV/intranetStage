@@ -1,0 +1,102 @@
+{% load static %}
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar__left">
+      <a href="{% url 'newsletter:index' %}">
+        <img class="logoFA"
+             src="{% static 'images/Logo_FA_Horizontal_RVB.png' %}"
+             alt="Logo de Fougères Agglomération" />
+      </a>
+    </div>
+    <button class="burger-menu" aria-label="Menu" aria-expanded="false">
+      <span class="burger-span"></span>
+      <span class="burger-span"></span>
+      <span class="burger-span"></span>
+    </button>
+    <ul class="navbar__center">
+      <li>
+        <a class="nav-item
+                  {% if request.resolver_match.url_name == 'index' and request.resolver_match.namespace == 'newsletter' %}
+                    active
+                  {% endif %}"
+           href="{% url 'newsletter:index' %}">Actualités</a>
+      </li>
+      <li>
+        <a class="nav-item
+                  {% if request.resolver_match.url_name == 'trombinoscope' %}active{% endif %}"
+           href="{% url 'trombinoscope:trombinoscope' %}">Trombinoscope</a>
+      </li>
+      <li>
+        <a class="nav-item
+                  {% if request.resolver_match.url_name == 'organigramme' %}active{% endif %}"
+           href="{% url 'core:organigramme' %}">Organigramme</a>
+      </li>
+      <li class="nav-dropdown">
+        <a class="nav-item" href="#" onclick="toggleDropdown(event)">Ressources ▾</a>
+        <ul class="dropdown-content">
+          <li>
+            <a href="{% url 'fiche_reflexes:fiche_reflexes_index' %}">Fiches réflexes</a>
+          </li>
+          <li>
+            <a href="{% url "newsletter:index_outils_internes" %}">Outils internet</a>
+          </li>
+          <li>
+            <a href="{% url "core:rapport_activite" %}">Rapports d'activité</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <div class="navbar__right">
+      <img src="{% static 'images/login_icon1.png' %}"
+           alt=""
+           class="icon_connexion" />
+      <a class="nav-item" href="{% url 'admin:index' %}">Connexion</a>
+    </div>
+  </nav>
+</header>
+<script>
+  // Toggle menu burger
+  const burgerMenu = document.querySelector(".burger-menu");
+  const navCenter = document.querySelector(".navbar__center");
+  
+  // Créer l'overlay
+  const overlay = document.createElement("div");
+  overlay.className = "menu-overlay";
+  document.body.appendChild(overlay);
+  
+  burgerMenu.addEventListener("click", () => {
+    burgerMenu.classList.toggle("active");
+    navCenter.classList.toggle("active");
+    overlay.classList.toggle("active");
+    
+    // Accessibilité
+    const isExpanded = burgerMenu.getAttribute("aria-expanded") === "true";
+    burgerMenu.setAttribute("aria-expanded", !isExpanded);
+  });
+  
+  // Fermer le menu en cliquant sur l'overlay
+  overlay.addEventListener("click", () => {
+    burgerMenu.classList.remove("active");
+    navCenter.classList.remove("active");
+    overlay.classList.remove("active");
+    burgerMenu.setAttribute("aria-expanded", "false");
+  });
+  
+  // Toggle dropdown en mobile
+  function toggleDropdown(event) {
+    if (window.innerWidth < 1024) {
+      event.preventDefault();
+      event.currentTarget.parentElement.classList.toggle("active");
+    }
+  }
+  
+  // Fermer le menu si on redimensionne vers desktop
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 1024) {
+      burgerMenu.classList.remove("active");
+      navCenter.classList.remove("active");
+      overlay.classList.remove("active");
+      burgerMenu.setAttribute("aria-expanded", "false");
+    }
+  });
+</script>

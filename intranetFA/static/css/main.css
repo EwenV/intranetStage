@@ -1,0 +1,133 @@
+/* ===========================
+   Base générale
+=========================== */
+
+* {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+main {
+  max-width: var(--main-width);
+  margin: 2rem auto;
+  padding: 0 var(--padding-section);
+}
+
+.page-title {
+  margin-bottom: 2.5rem;
+}
+
+.nav-item.active {
+  color: var(--color-secondary); /* même couleur que :hover */
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* ===========================
+   Composants réutilisables
+=========================== */
+button,
+a[role="button"] {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover,
+a[role="button"]:hover {
+  background: var(--color-secondary);
+}
+
+a.outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+a.outline:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 2em;
+}
+
+.pagination * {
+  background-color: var(--color-primary);
+  border-radius: var(--radius);
+  padding: 0.5rem;
+}
+
+/* ===========================
+   Search Bar
+=========================== */
+.filter-container {
+  display: flex;
+  flex-direction: line;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-container {
+  display: flex;
+  max-width: 400px;
+}
+
+.search-container input {
+  flex: 1;
+  margin-bottom: 0;
+  border-radius: var(--radius) 0px 0px var(--radius);
+  border: 1px solid #ccc;
+  padding: 0rem 0.8rem 0rem;
+  outline: none;
+}
+
+.reset-search {
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  padding: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reset-search svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  filter: invert(1);
+}
+
+.search-button:hover {
+  background-color: var(--color-secondary);
+}
+
+/* ===========================
+   Très grands écrans / 4K (> 2560px)
+=========================== */
+@media screen and (min-width: 2560px) {
+  body {
+    font-size: calc(var(--font-size-base) * 1.5);
+  }
+  main {
+    max-width: calc(var(--main-width) * 1.5);
+  }
+}

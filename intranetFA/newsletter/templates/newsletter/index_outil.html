@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_extra %}
+    <link rel="stylesheet" href="{% static "css/pages/outils_internes.css" %}">
+{% endblock head_extra %}
+{% block main %}
+    <h1 class="page-title">Outils Internet</h1>
+    <div class="outil-grid">
+        {% for outil in outils_internes %}
+            <div class="outil-card">
+                <h2 class="outil-title">{{ outil.titre }}</h2>
+                <a class="outil-image" href="{{ outil.lien_outil }}" target="_blank">
+                    {% if outil.image_en_tete %}
+                        <img src="{{ outil.image_en_tete.url }}" alt="Image d'en tête de l'outil">
+                    {% else %}
+                        <img src="{% static 'images/articles/default_outils.png' %}"
+                             alt="Image d'en tête par défaut des outils internes">
+                    {% endif %}
+                </a>
+                <div class="outils-buttons">
+                    <a class="outline"
+                       role="button"
+                       href="{% url 'newsletter:detail_outil_interne' pk=outil.pk %}">Notice</a>
+                </div>
+            </div>
+        {% empty %}
+            <p>Aucun outil interne publié pour le moment.</p>
+        {% endfor %}
+    </div>
+{% endblock main %}
