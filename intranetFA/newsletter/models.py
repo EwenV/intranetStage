@@ -1,16 +1,13 @@
 from django.db import models
 from django.utils import timezone
 from django_summernote.models import AbstractAttachment
-from PIL import Image, ExifTags
 import uuid
 import os
-from datetime import timedelta
 from core.services.conversion_avif import ConversionAvifService
 import logging
 from django.conf import settings
 import re
-from django.db.models.signals import pre_save
-from django.dispatch import receiver
+from core.services.validators import validate_url
 
 logger = logging.getLogger("newsletter")
 
@@ -191,7 +188,9 @@ class CustomAttachment(AbstractAttachment):
 
 
 class OutilInterne(Article):
-    lien_outil = models.URLField(max_length=300, blank=True, null=True)
+    lien_outil = models.URLField(
+        max_length=300, blank=True, null=True, validators=[validate_url]
+    )
 
     def save(self, *args, **kwargs):
         self.categorie = "OUTIL"
