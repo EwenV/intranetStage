@@ -1,8 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
-from django.http import HttpResponseForbidden
+from intranetFA.newsletter.services.sanitize import sanitize_html
 from newsletter.models import Article
 from newsletter.models import OutilInterne
-import json
 from django.core.paginator import Paginator
 from django.db.models import Q, Value
 from django.db.models.functions import Concat
@@ -62,6 +61,7 @@ def index_view(request):
 
 def detail_view(request, pk):
     article = get_object_or_404(Article, pk=pk)
+    article.contenu = sanitize_html(article.contenu)
 
     if article.est_publie:
         return render(request, "newsletter/article.html", {"article": article})
