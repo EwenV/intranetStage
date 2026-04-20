@@ -7,7 +7,7 @@
 {% endblock head_extra %}
 {% block main %}
   <div class="container"
-       x-data="{ search: '{{ request.GET.search|default:'' }}', categorie: '{{ request.GET.categorie|default:'' }}', sortOrder: '{{ request.GET.sort_order|default:'desc' }}' }">
+       x-data="{ search: '{{ request.GET.search|default:''|escapejs }}', categorie: '{{ request.GET.categorie|default:'' }}', sortOrder: '{{ request.GET.sort_order|default:'desc' }}' }">
     <div class="filter-container">
       <div class="search-container">
         <input type="text"

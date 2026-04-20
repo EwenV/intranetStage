@@ -62,7 +62,6 @@ def find_fa_employees():
                 thumbnail = ""
 
         entry_data = {
-            "dn": clean(entry.entry_dn),
             "name": clean(entry["name"].value if "name" in entry else ""),
             "givenName": clean(
                 entry["givenName"].value if "givenName" in entry else ""
