@@ -1,4 +1,5 @@
 # newsletter/signals.py
+import logging
 from django.db.models.signals import post_save, pre_delete
 from django.dispatch import receiver
 from django.utils import timezone
@@ -7,6 +8,7 @@ from .models import Article, CustomAttachment
 import os
 
 
+logger = logging.getLogger("newsletter")
 NB_IMG_SUPPRIMEE_MAX = 100
 
 
@@ -31,8 +33,10 @@ def manage_article_images(sender, instance, **kwargs):
                 os.remove(img.file.path)
             img.delete()
         except Exception as e:
-            # TODO: erreur à log
-            pass
+            logger.error(
+                f"Erreur lors du nettoyage de l'image orpheline {img.pk} "
+                f"(fichier: {img.file.name}): {e}"
+            )
 
 
 # Déclenché avant la suppression d'un article
@@ -46,5 +50,7 @@ def cleanup_article_images(sender, instance, **kwargs):
                 os.remove(attachment.file.path)
             attachment.delete()
         except Exception as e:
-            # TODO: erreur à log
-            pass
+            logger.error(
+                f"Erreur lors de la suppression de l'image {attachment.pk} "
+                f"(fichier: {attachment.file.name}) de l'article '{instance.titre}': {e}"
+            )
