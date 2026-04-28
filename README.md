@@ -1,5 +1,17 @@
 # Intranet Stage Fougères Agglomération
 
+> ⚠️ **Contexte** :
+> Ce projet est une version améliorée et adaptée de l'intranet développé lors de mon stage à Fougères Agglomération. La vidéo de démonstration utilise la charte graphique de FA, mais le code public ne contient aucun asset propriétaire ou donnée sensible. Toutes les données sont fictives ou anonymisées.
+>
+[![Python](https://img.shields.io/badge/Python-3.12%2B-blue)](https://www.python.org/)
+[![Django](https://img.shields.io/badge/Django-5.2.13-green)](https://www.djangoproject.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-13%2B-336791)](https://www.postgresql.org/)
+[![Poetry](https://img.shields.io/badge/Poetry-1.7%2B-60A5FA)](https://python-poetry.org/)
+[![LDAP](https://img.shields.io/badge/LDAP-ldap3%202.9.1-orange)](https://ldap3.readthedocs.io/)
+[![HTMX](https://img.shields.io/badge/HTMX-1.9%2B-ff69b4)](https://htmx.org/)
+[![Pillow](https://img.shields.io/badge/Pillow-11.3.0-yellowgreen)](https://python-pillow.org/)
+[![Summernote](https://img.shields.io/badge/Summernote-0.8.20.0-brightgreen)](https://github.com/summernote/django-summernote)
+
 Intranet développé en **Python / Django** lors de mon stage de deux mois au service informatique de Fougères Agglomération. L'application centralise les outils de communication interne et l'annuaire des agents, par manque de temps elle n'a cependant pas été déployée sur les serveurs de l'agglomération.
 
 ## Fonctionnalités
@@ -84,7 +96,7 @@ Le champ contenu des articles utilise un éditeur riche (Summernote) qui produit
 - [ ] Configurer HTTPS et activer les headers de sécurité associés
       (`SECURE_SSL_REDIRECT`, `HSTS`, `SESSION_COOKIE_SECURE`)
 - [ ] Protection brute-force sur le login (`django-axes`) notamment contre les DDoS (attaque par déni de service) 
-- [ ] Audit des dépendances (`pip-audit` ou Dependabot)
+- [ ] Audit des dépendances (`pip-audit`)
 
 ---
 
@@ -146,6 +158,14 @@ L'application est alors accessible sur `http://localhost:8000`.
 
 ---
 
+## Démo
+
+https://github.com/user-attachments/assets/0adb0e81-9db9-4f18-b21a-60455556559c
+
+---
+
 ## Auteur
 
 **Ewen Vuichard** - Stage au Service Informatique de Fougères Agglomération
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/ewenvuichard/)
